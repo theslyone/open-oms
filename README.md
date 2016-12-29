@@ -3,7 +3,7 @@
 This is an open source order management system that can be integrated to the Nigerian stock market exchange server [nse](http://nse.com.ng/) using the popular FIX protocol implementation [Quickfix](http://www.quickfixengine.org/).
 
 ## Screenshot
-![screenshot](https://github.com/theslyone/open-oms/blob/master/img/snapshot.png).
+![screenshot](https://github.com/theslyone/open-oms/tree/master/assets/images/snapshot.png).
 
 ## Prerequisites
 Make sure you have installed all of the following prerequisites on your development machine:

@@ -1,0 +1,55 @@
+{
+  "name": "oms",
+  "private": true,
+  "version": "0.0.0",
+  "description": "An open oms built on nodejs sails",
+  "keywords": [],
+  "dependencies": {
+    "angular-loading-bar": "0.9.0",
+    "bcrypt-nodejs": "0.0.3",
+    "ejs": "2.3.4",
+    "express-jwt": "~0.2.0",
+    "express-session": "1.14.0",
+    "grunt": "1.0.1",
+    "grunt-contrib-clean": "1.0.0",
+    "grunt-contrib-coffee": "1.0.0",
+    "grunt-contrib-concat": "1.0.1",
+    "grunt-contrib-copy": "1.0.0",
+    "grunt-contrib-cssmin": "1.0.1",
+    "grunt-contrib-jst": "1.0.0",
+    "grunt-contrib-less": "1.3.0",
+    "grunt-contrib-uglify": "1.0.1",
+    "grunt-contrib-watch": "1.0.0",
+    "grunt-sails-linker": "~0.10.1",
+    "grunt-sync": "0.5.2",
+    "include-all": "~0.1.6",
+    "jsonwebtoken": "~0.2.0",
+    "nan": "^2.4.0",
+    "node-quickfix": "../node-quickfix",
+    "nse-fix": "../nse-fix",
+    "optimist": "0.3.4",
+    "pad": "^1.0.0",
+    "passport": "~0.1.16",
+    "passport-local": "~0.1.6",
+    "rc": "1.0.1",
+    "sails": "~0.12.4",
+    "sails-disk": "~0.10.9",
+    "sails-hook-autoreload": "^0.13.2",
+    "sails-hook-blueprint-count": "0.0.3",
+    "sails-sqlserver": "~0.10.8"
+  },
+  "env": {
+    "PYTHON": "C:\\Python27"
+  },
+  "scripts": {
+    "debug": "node debug app.js",
+    "start": "node app.js"
+  },
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/anonymous node/sails user/oms.git"
+  },
+  "author": "anonymous node/sails user",
+  "license": ""
+}

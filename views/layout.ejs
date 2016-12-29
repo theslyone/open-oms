@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%=typeof title == 'undefined' ? 'New Sails App' : title%></title>
+
+    <!-- Viewport mobile tag for sensible mobile support -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+    <!--
+        Stylesheets and Preprocessors
+        ==============================
+
+        You can always bring in CSS files manually with `<link>` tags, or asynchronously
+        using a solution like AMD (RequireJS).  Or, if you like, you can take advantage
+        of Sails' conventional asset pipeline (boilerplate Gruntfile).
+
+        By default, stylesheets from your `assets/styles` folder are included
+        here automatically (between STYLES and STYLES END). Both CSS (.css) and LESS (.less)
+        are supported. In production, your styles will be minified and concatenated into
+        a single file.
+
+        To customize any part of the built-in behavior, just edit `tasks/pipeline.js`.
+        For example, here are a few things you could do:
+
+            + Change the order of your CSS files
+            + Import stylesheets from other directories
+            + Use a different or additional preprocessor, like SASS, SCSS or Stylus
+    -->
+
+    <!--STYLES-->
+    <link rel="stylesheet" href="/styles/angular-ui-switch.min.css">
+    <link rel="stylesheet" href="/styles/billing.css">
+    <link rel="stylesheet" href="/styles/glyphicons.min.css">
+    <link rel="stylesheet" href="/styles/importer.css">
+    <link rel="stylesheet" href="/styles/jquery-ui.min.css">
+    <link rel="stylesheet" href="/styles/jquery.loadmask.css">
+    <link rel="stylesheet" href="/styles/less.css">
+    <link rel="stylesheet" href="/styles/loading-bar.css">
+    <link rel="stylesheet" href="/styles/loading-bar.min.css">
+    <link rel="stylesheet" href="/styles/signin.css">
+    <link rel="stylesheet" href="/styles/Site.css">
+    <link rel="stylesheet" href="/styles/stocktrend.css">
+    <link rel="stylesheet" href="/styles/validation.css">
+    <!--STYLES END-->
+  </head>
+
+  <body>
+    <%- body %>
+
+
+
+    <!--
+        Client-side Templates
+        ========================
+
+        HTML templates are important prerequisites of modern, rich client applications.
+        To work their magic, frameworks like Backbone, Angular, Ember, and Knockout require
+        that you load these templates client-side.
+
+        By default, your Gruntfile is configured to automatically load and precompile
+        client-side JST templates in your `assets/templates` folder, then
+        include them here automatically (between TEMPLATES and TEMPLATES END).
+
+        To customize this behavior to fit your needs, just edit `tasks/pipeline.js`.
+        For example, here are a few things you could do:
+
+            + Import templates from other directories
+            + Use a different template engine (handlebars, jade, dust, etc.)
+            + Internationalize your client-side templates using a server-side
+              stringfile before they're served.
+    -->
+
+    <!--TEMPLATES-->
+    <script type="text/javascript" src="/jst.js"></script>
+    <!--TEMPLATES END-->
+
+
+    <!--
+
+      Client-side Javascript
+      ========================
+
+      You can always bring in JS files manually with `script` tags, or asynchronously
+      on the client using a solution like AMD (RequireJS).  Or, if you like, you can
+      take advantage of Sails' conventional asset pipeline (boilerplate Gruntfile).
+
+      By default, files in your `assets/js` folder are included here
+      automatically (between SCRIPTS and SCRIPTS END).  Both JavaScript (.js) and
+      CoffeeScript (.coffee) are supported. In production, your scripts will be minified
+      and concatenated into a single file.
+
+      To customize any part of the built-in behavior, just edit `tasks/pipeline.js`.
+      For example, here are a few things you could do:
+
+          + Change the order of your scripts
+          + Import scripts from other directories
+          + Use a different preprocessor, like TypeScript
+
+    -->
+
+    <!--SCRIPTS-->
+    <script src="/js/dependencies/sails.io.js"></script>
+    <script src="/js/angular-local-storage.min.js"></script>
+    <script src="/js/angular-translate-storage-cookie.min.js"></script>
+    <script src="/js/angular-translate-storage-local.min.js"></script>
+    <script src="/js/angular-ui-switch.min.js"></script>
+    <script src="/js/angularjs/app.js"></script>
+    <script src="/js/angularjs/controllers/billingController.js"></script>
+    <script src="/js/angularjs/controllers/loginController.js"></script>
+    <script src="/js/angularjs/controllers/marketPlaceController.js"></script>
+    <script src="/js/angularjs/controllers/notificationsController.js"></script>
+    <script src="/js/angularjs/directives.js"></script>
+    <script src="/js/angularjs/factories/sessionInjector.js"></script>
+    <script src="/js/angularjs/filters.js"></script>
+    <script src="/js/angularjs/services/clientService.js"></script>
+    <script src="/js/angularjs/services/clientStockService.js"></script>
+    <script src="/js/angularjs/services/enumService.js"></script>
+    <script src="/js/angularjs/services/executionReportService.js"></script>
+    <script src="/js/angularjs/services/kendoService.js"></script>
+    <script src="/js/angularjs/services/marketPlaceService.js"></script>
+    <script src="/js/angularjs/services/orderBookService.js"></script>
+    <script src="/js/angularjs/services/stockService.js"></script>
+    <script src="/js/angularjs/services/userService.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/clock.min.js"></script>
+    <script src="/js/exporting.js"></script>
+    <script src="/js/highcharts-ng.min.js"></script>
+    <script src="/js/highstock.js"></script>
+    <script src="/js/jquery-ui.min.js"></script>
+    <script src="/js/jquery.color-2.1.2.min.js"></script>
+    <script src="/js/jquery.loadmask.min.js"></script>
+    <script src="/js/jquery.scrollTableBody-1.0.0.js"></script>
+    <script src="/js/jQueryColor-FlashEffect.js"></script>
+    <script src="/js/loading-bar.js"></script>
+    <script src="/js/loading-bar.min.js"></script>
+    <script src="/js/ngStorage.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <!--SCRIPTS END-->
+  </body>
+</html>

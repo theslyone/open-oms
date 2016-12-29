@@ -1,0 +1,35 @@
+﻿<script type="text/x-kendo-template" id="order_template">
+    <div>
+        <div class="k-edit-label">
+            <label for="shareId">Symbol</label>
+        </div>
+        <div data-container-for="shareId" class="k-edit-field">
+            <select name="shareId" k-on-change="editStockChanged(kendoEvent,dataItem)" kendo-dropdownlist k-data-source="allSecuritiesDataSource" data-bind="value: shareId" ng-model="dataItem.shareId" data-sharevalidation-msg="Share is required" k-data-text-field="'text'" k-data-value-field="'value'" ng-readonly="!dataItem.isNew()" />
+        </div>
+        <div class="k-edit-label">
+            <label for="ordType">Type</label>
+        </div>
+        <div data-container-for="ordType" class="k-edit-field">
+            <select name="ordType" k-on-change="editOrderTypeChanged(kendoEvent,dataItem)" kendo-dropdownlist k-data-source="orderTypeDataSource" data-bind="value: ordType" ng-model="dataItem.ordType" k-data-text-field="'text'" k-data-value-field="'value'" data-ordTypevalidation-msg="Type is required" />
+        </div>
+        <div class="k-edit-label">
+            <label for="side">Side</label>
+        </div>
+        <div data-container-for="side" ng-class="{'custom custom-red': dataItem.side == 2,'custom custom-green': dataItem.side == 1 }">
+            <select name="side" k-on-change="dataItem.dirty=true" kendo-dropdownlist k-data-source="sideDataSource" data-bind="value: side" ng-model="dataItem.side" k-data-text-field="'text'" k-data-value-field="'value'" data-sidevalidation-msg="Side is required" />
+        </div>
+        <div class="k-edit-label">
+            <label for="quantity">Quantity</label>
+        </div>
+        <div data-container-for="quantity" class="k-edit-field">
+            <input name="quantity" kendo-numeric-text-box k-min="0" k-on-change="dataItem.dirty=true" k-step="1" data-bind="value: quantity" data-qtyvalidation-msg="Quantity is required" />
+        </div>
+        <div class="k-edit-label">
+            <label for="limitPrice">Price</label>
+        </div>
+        <div data-container-for="limitPrice" class="k-edit-field">
+            <input name="limitPrice" kendo-numeric-text-box k-min="0" k-on-change="dataItem.dirty=true" k-step="0.01" data-limitvalidation-msg="Limit price is required" data-bind="value: limitPrice"  k-ng-model="dataItem.limitPrice" ng-disabled="dataItem.ordType == 1" />
+        </div>
+    </div>
+    <div style="clear:both;"></div>
+</script>

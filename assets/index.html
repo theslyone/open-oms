@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verdant - OMS</title>
+    <link rel="stylesheet" href="//kendo.cdn.telerik.com/2015.3.930/styles/kendo.common.min.css" />
+    <link rel="stylesheet" href='//kendo.cdn.telerik.com/2015.3.930/styles/kendo.metro.min.css' />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/0.4.16/toaster.min.css" />
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <link href="styles/Site.css" rel="stylesheet" />
+    <link href="styles/less.css" rel="stylesheet" />
+    <link href="styles/glyphicons.min.css" rel="stylesheet" />
+    <link href="styles/stocktrend.css" rel="stylesheet" />
+    <link href="styles/jquery.loadmask.css" rel="stylesheet" />
+    <link href="styles/jquery-ui.min.css" rel="stylesheet" />
+    <link href="styles/angular-ui-switch.min.css" rel="stylesheet" />
+    <link href="styles/loading-bar.min.css" rel="stylesheet" />
+
+    <script src="//kendo.cdn.telerik.com/2015.3.930/js/jquery.min.js" type="text/javascript"></script>
+    <script src="//code.angularjs.org/1.2.0/angular.min.js"></script>
+    <script src="//code.angularjs.org/1.2.0/angular-route.min.js"></script>
+    <script src="//code.angularjs.org/1.2.0/angular-animate.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/0.4.16/toaster.min.js"></script>
+    <script src="//kendo.cdn.telerik.com/2015.3.930/js/kendo.all.min.js"></script>
+    <script src="//kendo.cdn.telerik.com/2015.3.930/js/kendo.timezones.min.js"></script>
+    <script src="//kendo.cdn.telerik.com/2015.3.930/js/kendo.aspnetmvc.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/angular-ui-switch.min.js"></script>
+    <script src="js/ngStorage.min.js"></script>
+    <script src="js/highcharts-ng.min.js"></script>
+    <script src="js/highstock.js"></script>
+    <script src="js/exporting.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/jquery.loadmask.min.js"></script>
+    <script src="js/jquery.color-2.1.2.min.js"></script>
+    <script src="js/clock.min.js"></script>
+    <script src="js/jQueryColor-FlashEffect.js"></script>
+    <script src="js/jquery.scrollTableBody-1.0.0.js"></script>
+    <script src="js/angularjs/app.js"></script>
+    <script src="js/angularjs/directives.js"></script>
+    <script src="js/angularjs/filters.js"></script>
+    <script src="js/angularjs/services/marketPlaceService.js"></script>
+    <script src="js/angularjs/services/orderBookService.js"></script>
+    <script src="js/angularjs/services/userService.js"></script>
+    <script src="js/angularjs/services/enumService.js"></script>
+    <script src="js/angularjs/services/stockService.js"></script>
+    <script src="js/angularjs/services/clientService.js"></script>
+    <script src="js/angularjs/services/clientStockService.js"></script>
+    <script src="js/angularjs/services/executionReportService.js"></script>
+    <script src="js/angularjs/services/kendoService.js"></script>
+    <script src="js/angularjs/factories/sessionInjector.js"></script>
+    <script src="js/angularjs/controllers/marketPlaceController.js"></script>
+    <script src="js/angularjs/controllers/billingController.js"></script>
+    <script src="js/angularjs/controllers/loginController.js"></script>
+    <script type="text/javascript" src="/js/dependencies/sails.io.js"></script>
+    <script src="js/loading-bar.min.js"></script>
+</head>
+
+<body>
+    <div ng-app="marketPlaceApp" ng-controller="loginController" ng-cloak>
+        <!--<div ng-include="'/templates/order_book.html'"></div>-->
+        <script type="text/x-kendo-template" id="order_template">
+            <div>
+                <div class="k-edit-label">
+                    <label for="shareId">Symbol</label>
+                </div>
+                <div data-container-for="shareId" class="k-edit-field">
+                    <select name="shareId" k-on-change="editStockChanged(kendoEvent,dataItem)" kendo-dropdownlist k-data-source="allSecuritiesDataSource" data-bind="value: shareId" ng-model="dataItem.shareId" data-sharevalidation-msg="Share is required" k-data-text-field="'text'" k-data-value-field="'value'" ng-readonly="!dataItem.isNew()" />
+                </div>
+                <div class="k-edit-label">
+                    <label for="ordType">Type</label>
+                </div>
+                <div data-container-for="ordType" class="k-edit-field">
+                    <select name="ordType" k-on-change="editOrderTypeChanged(kendoEvent,dataItem)" kendo-dropdownlist k-data-source="orderTypeDataSource" data-bind="value: ordType" ng-model="dataItem.ordType" k-data-text-field="'text'" k-data-value-field="'value'" data-ordTypevalidation-msg="Type is required" />
+                </div>
+                <div class="k-edit-label">
+                    <label for="side">Side</label>
+                </div>
+                <div data-container-for="side" ng-class="{'custom custom-red': dataItem.side == 2,'custom custom-green': dataItem.side == 1 }">
+                    <select name="side" k-on-change="dataItem.dirty=true" kendo-dropdownlist k-data-source="sideDataSource" data-bind="value: side" ng-model="dataItem.side" k-data-text-field="'text'" k-data-value-field="'value'" data-sidevalidation-msg="Side is required" />
+                </div>
+                <div class="k-edit-label">
+                    <label for="quantity">Quantity</label>
+                </div>
+                <div data-container-for="quantity" class="k-edit-field">
+                    <input name="quantity" kendo-numeric-text-box k-min="0" k-on-change="dataItem.dirty=true" k-step="1" data-bind="value: quantity" data-qtyvalidation-msg="Quantity is required" />
+                </div>
+                <div class="k-edit-label">
+                    <label for="limitPrice">Price</label>
+                </div>
+                <div data-container-for="limitPrice" class="k-edit-field">
+                    <input name="limitPrice" kendo-numeric-text-box k-min="0" k-on-change="dataItem.dirty=true" k-step="0.01" data-limitvalidation-msg="Limit price is required" data-bind="value: limitPrice" k-ng-model="dataItem.limitPrice" ng-disabled="dataItem.ordType == 1" />
+                </div>
+            </div>
+            <div style="clear:both;"></div>
+        </script>
+
+        <div ng-include="'/templates/validation.html'"></div>
+        <div class="main-content" ng-controller="marketPlaceController">
+            <div class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="~/">
+                            <img src="images/maxifund.png" style="height: 30px;" class="img-responsive" />
+                        </a>
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <div class="pull-left col-lg-3" style="margin:9px 0px 9px 0px;">
+                            <div ng-show="isAuthorized([userRoles.admin,userRoles.client])">
+                                <select kendo-drop-down-list="stockDropdownList" k-option-label="'Select stock...'" 
+                                        k-data-text-field="'symbol'" k-data-value-field="'id'" k-filter="'contains'" 
+                                        k-auto-bind="false" k-min-length="2" k-ng-model="currentStockId" 
+                                        k-data-source="stockDataSource" k-on-change="stockChanged(kendoEvent)" style="width: 100%">
+                                </select>
+                            </div>                            
+                        </div>
+                        <div class="menu_nav">
+                            <ul class="nav navbar-nav">
+                                <li ng-show="isAuthorized([userRoles.admin,userRoles.client])" class="active">
+                                    <a href="#/stock_trend">Stock Trend</a>
+                                </li>
+                                <li ng-show="isAuthorized(userRoles.admin)">
+                                    <a href="#/billing">Billing</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div ng-include="'/templates/login_status.html'"></div>
+                        <div class="pull-right">
+                            <div ng-include="'/templates/server_status.html'"></div>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+            <div class="container body-content" style="padding-top:20px;">
+                <div ng-view></div>
+                <hr />
+                <footer>
+                    <p>&copy; July, 05 2016 - RSK Initiatives</p>
+                </footer>
+            </div>
+        </div>
+    </div>
+    <div login-dialog ng-if="!isLoginPage"></div>
+</body>
+
+</html>

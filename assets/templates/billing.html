@@ -1,0 +1,61 @@
+﻿<link href="styles/billing.css" rel="stylesheet" />
+<h2 class="left">Billing &amp; Cost Management Dashboard</h2>
+<hr>
+<div ng-controller="billingController">
+
+
+    <div class="datepicker-section" style="">
+        <label for="end" style="margin-left: 1em">Date:</label>
+        <input id="monthPickeraa"
+               k-ng-model="monthSelected"
+               kendo-date-time-picker
+               k-options="monthPickerOptions"
+               k-on-change="monthPickerChanged(kendoEvent)" />       
+    </div>
+
+    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+        <div id="tradeGrid" kendo-grid k-options="tradeGridOptions"></div>        
+    </div>
+
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <table class="dashboard-table dashboard-services-table">
+            <tbody>
+                <tr ng-repeat="cost in costSummary" class="row-border-top">
+                    <td>
+                        <div class="legend-color-block" style="opacity: 1; background-color: {{cost.Color}};"></div>
+                    </td>
+                    <td class="top-services-table-td top-services column-left-content" style="opacity: 1;">{{cost.Name}}</td>
+                    <td class="top-services-table-td top-services column-right-content" style="opacity: 1;">{{cost.Amount | currency:"₦"}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="dashboard-table dashboard-tax-table">
+            <tbody>
+                <tr class="row-border-top ng-scope">
+                    <td class="column-left-content top-services-table-td" style="opacity: 1;">Tax</td>
+                    <td class="column-right-content top-services-table-td ng-binding" style="opacity: 1;">{{tax | currency:"₦"}}</td>
+                </tr>
+                <tr class="row-border-top ng-scope">
+                    <td class="column-left-content top-services-table-td" style="opacity: 1;">
+                        <strong>Total</strong>
+                    </td>
+                    <td class="column-right-content top-services-table-td" style="opacity: 1;">
+                        <strong class="ng-binding">{{ costSummary|total:'Amount'|currency:"₦"}}</strong>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div kendo-chart
+             k-title="{ text: 'Current Month Cost Analysis', position: 'bottom' }"
+             k-series-defaults="{ type: 'pie' }"
+             k-series-colors="['#03a9f4', '#ff9800', '#fad84a', '#4caf50', '#C0276C']"
+             tooltip="{ visible: true, template: '${ category } - ₦${ value }' }"
+             k-series="[{field: 'Amount',categoryField: 'Name',padding: 0}]"
+             k-data-source="costSummaryDataSource"
+             style="height: 250px;">
+        </div>
+
+    </div>
+
+</div>

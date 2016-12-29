@@ -1,0 +1,26 @@
+﻿<ul class="floatRight top-right">
+    <li class="status">
+        <span>
+            <span>
+                <span>Time:</span>
+        </span>
+        {{currentServerTime | date:"dd MMM, yyyy" }}
+        </span>
+    </li>
+    <li class="status" tooltip-trigger="mouseenter" tooltip="Market: A green light indicates connection to NSE Exchange and availability of normal trading operations." tooltip-placement="bottom">
+        <span>
+            <span>
+                <span>Market:</span>
+        </span>
+        <i ng-class="{'open':marketStatusOpen,'closed':!marketStatusOpen}"></i>
+        </span>
+    </li>
+    <li class="status" tooltip-trigger="mouseenter" tooltip="Server: A green light indicates connection to the NSE Exchange server" tooltip-placement="bottom">
+        <span>
+            <span>
+                <span>Server:</span>
+        </span>
+        <i ng-class="{'open':wsOpen,'closed':!wsOpen}"></i>
+        </span>
+    </li>
+</ul>

@@ -1,0 +1,15 @@
+{
+  "globalDependencies": {
+    "angular-loading-bar": "registry:dt/angular-loading-bar#0.0.0+20160317120654",
+    "bcrypt": "registry:dt/bcrypt#0.0.0+20160316155526",
+    "bcrypt-nodejs": "registry:dt/bcrypt-nodejs#0.0.0+20160316155526",
+    "ejs": "registry:dt/ejs#0.0.0+20160317120654",
+    "express-jwt": "registry:dt/express-jwt#0.0.0+20160629014920",
+    "express-session": "registry:dt/express-session#0.0.0+20160819134112",
+    "jsonwebtoken": "registry:dt/jsonwebtoken#0.0.0+20160720062725",
+    "node": "registry:dt/node#6.0.0+20160818175514",
+    "optimist": "registry:dt/optimist#0.0.0+20160316171810",
+    "passport": "registry:dt/passport#0.2.0+20160720063208",
+    "passport-local": "registry:dt/passport-local#0.0.0+20160316155526"
+  }
+}

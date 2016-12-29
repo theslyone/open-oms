@@ -1,0 +1,87 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.webpart-msg-alert {
+    background: #ffc url(images/n_alert.png) no-repeat 245px 20%;
+    border: 1px solid #fc0;
+    display: block;
+    font-weight: bold;
+    /*margin: 2px auto 14px; 
+  padding: 2px 2px 2px; */
+    text-align: left;
+    height: 35px;
+    position: fixed;
+    top: 0px;
+    right: 0;
+    left: 0;
+    width: 100%;
+    z-index: 70000;
+}
+
+.webpart-msg-error {
+    background: #fdd url(images/n_error.png) no-repeat 245px 50%;
+    border: 1px solid #f00;
+    display: block;
+    font-weight: bold;
+    /*margin: 2px 2px 14px; 
+    padding: 1px 1px 1px; */
+    text-align: left;
+    height: 35px;
+    position: fixed;
+    top: 0px;
+    right: 0;
+    left: 0;
+    width: 100%;
+    z-index: 70000;
+}
+
+.datepicker-section {
+    margin: 0 auto 15px auto;
+    padding: 10px;
+    border: 1px solid rgba(0,0,0,0.05);
+    background-color: rgba(0,0,0,0.01);
+}
+
+.custom {
+    float: right;
+    clear: right;
+    width: 43%;
+    margin-right: 19%;
+    padding: 3px;
+}
+
+.custom-red {
+    background-color: rgb(255, 0, 0);
+}
+
+.custom-green {
+    background-color: rgb(0, 0, 255);
+}
+
+ul#companyul li {
+    display: inline;
+    list-style-type: none;
+    padding-right: 20px;
+}

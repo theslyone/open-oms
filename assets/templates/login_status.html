@@ -1,0 +1,25 @@
+﻿<div ng-show="isLoggedIn()" class="dropdown pull-right">
+    <button class="btn btn-primary btn-xs dropdown-toggle" style="margin: 8px 0px 0px 0px;" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        [{{currentUser.firstName}}]
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li ng-if="isAuthorized(userRoles.admin)">
+            <a href="//crm.{{portalUrl}}/home/dashboard" target="_blank">CRM</a>
+        </li>
+        <li ng-show="isAuthorized(userRoles.admin)" role="separator" class="divider"></li>
+        <li ng-show="isAuthorized(userRoles.client)">
+            <a href="//{{portalUrl}}/home/profile" target="_blank">My Profile</a>
+        </li>
+        <li ng-show="isAuthorized(userRoles.client)">
+            <a href="//{{portalUrl}}/home/dashboard" target="_blank">My Dashboard</a>
+        </li>
+        <li ng-show="isAuthorized(userRoles.client)" role="separator" class="divider"></li>
+        <li>
+            <a href="#" ng-click="$event.preventDefault();logout();">Logout</a>
+        </li>
+    </ul>
+</div>
+<ul ng-show="!isLoggedIn()" class="nav navbar-nav navbar-right">
+    <li><a class="" href="#/login">Log in </a></li>
+</ul>

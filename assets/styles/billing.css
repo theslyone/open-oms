@@ -1,0 +1,65 @@
+﻿hr {
+    border: 0;
+    border-top: 1px solid #e4e4e4;
+    margin: 3px 0;
+    clear: both;
+}
+
+h2 {
+    font-size: 24px;
+    padding: 0;
+}
+
+.left {
+    float: left;
+}
+
+.bill-table, .dashboard-table, .payment-instrument-table, .preferences-table, .credits-table {
+    width: 100%;
+}
+
+    .bill-table td, .dashboard-table td, .preferences-table td, .credits-table td {
+        height: 30px;
+        line-height: normal;
+    }
+
+.top-services-table-td {
+    padding: 3px 10px;
+}
+
+.column-left-content {
+    text-align: left;
+    padding-left: 10px;
+}
+
+.column-right-content {
+    text-align: right;
+    padding-right: 10px;
+    letter-spacing: 1px;
+    width: 120px;
+}
+
+.dashboard-services-table {
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 100%;
+}
+
+.row-border-top {
+    border-top: 1px solid #e0e0e0;
+}
+
+.bill-table td, .dashboard-table td, .preferences-table td, .credits-table td {
+    height: 30px;
+    line-height: normal;
+}
+
+.top-services-table-td {
+    padding: 3px 10px;
+}
+
+.legend-color-block {
+    width: 20px;
+    height: 20px;
+    margin: 0 auto;
+}

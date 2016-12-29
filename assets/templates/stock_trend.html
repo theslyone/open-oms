@@ -1,0 +1,188 @@
+﻿<div id="share_details_div">
+    <toaster-container toaster-options="{
+                  'closeButton': false,
+                  'debug': false,
+                  'position-class': 'toast-bottom-right',
+                  'onclick': null,
+                  'showDuration': '500',
+                  'hideDuration': '1000',
+                  'timeOut': '5000',
+                  'extendedTimeOut': '1000',
+                  'showEasing': 'swing',
+                  'hideEasing': 'linear',
+                  'showMethod': 'fadeIn',
+                  'hideMethod': 'fadeOut',
+                  'escapeHtml': 'true'
+                }"></toaster-container>
+    <div ng-show="false">
+        <input type="button" id="open" value="Open Market" data-disable="{{marketStatusOpen}}"
+               data-ng-click="openMarket()" />
+        <input type="button" id="close" value="Close Market" data-disable="{{!marketStatusOpen}}"
+               data-ng-click="closeMarket()" />
+    </div>
+
+    <section id="market_list" class="ng-scope">
+        <div class="live-ticker">
+            <ul class="row">
+                <li class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                    Last price
+                    <p>
+                        <span id="lastPrice">{{lastPrice | currency:"₦"}}</span>
+                    </p>
+                </li>
+                <li class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    Bid / Offer
+                    <p>
+                        <span class="buy-color"><span id="bid">{{lastBid | currency:"₦"}}</span></span> /
+                        <span class="sell-color"><span id="ask">{{lastOffer | currency:"₦"}}</span></span>
+                    </p>
+                </li>
+                <li class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    Range
+                    <p>
+                        <span id="low_range">{{lowRange | currency:"₦"}}</span> -
+                        <span id="high_range">{{highRange | currency:"₦"}}</span>
+                    </p>
+                </li>
+                <li class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                    Volume
+                    <p>
+                        <span id="volume" class="vol-cnybtc">{{volume | currency:""}}</span>
+                    </p>
+                </li>
+            </ul>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12" id="charts_container">
+                <div id="chart" data-highcharts-chart="1">
+                    <h1 class="section-title"><span class="tip"><span>PRICE CHART</span></span></h1>
+                    <ul ng-hide="true" id="timekey" class="list-inline">
+                        <li ng-repeat="timekey in timekeys">
+                            <span ng-click="timekeyClick(timekey)">{{timekey.text}}</span>
+                        </li>
+                    </ul>
+                    <div id="chart-wrapper" class="chart-wrapper">
+                        <div class="demo-section k-content">                            
+                            <highchart id="highStockChart" config="highstockChatConfig"></highchart>                            
+                        </div>
+                    </div>
+
+                    <div ng-include src="'/templates/trader.html'"></div>
+                </div>
+            </div>
+            <div id="ticks_bar" class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <div class="group-order">
+                    <h1 class="section-title"><span class="tip"><span>ORDER BOOK</span></span></h1>
+                    <table class="merge-depth">
+                        <tbody>
+                            <tr>
+                                <td class="ng-binding">
+                                    Merge Depth:
+                                    <span class="switch-btn on"></span>
+                                </td>
+                                <td colspan="2" class=""></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="group-order">
+                        <thead>
+                            <tr>
+                                <td class="ng-binding">Price</td>
+                                <td class="ng-binding">Quantity </td>
+                            </tr>
+                        </thead>
+                        <tbody class="asks">
+                            <tr ng-repeat="offer in offers | orderBy: 'dateTime':true | limitTo:offerLimit" class="sell-color">
+                                <td>
+                                    <div>
+                                        {{offer.price | currency:"₦"}}
+                                        <span class="percent-bid" ng-style="{width: {{offer.percentageChange}} + '%'}">
+                                            <!--style="width: {{offer.percentageChange}}%"-->
+                                        </span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        {{offer.quantity}}
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody class="instant-info">
+                            <tr>
+                                <td colspan="4" style="padding: 5px">
+                                    <div class="instant-info-box">
+                                        <div class="last-price">
+                                            <label class="price-label ng-binding">Last</label>
+                                            <span>
+                                                <span id="last_price_cnybtc" class="price">{{lastPrice | currency:""}}</span>
+                                                <span class="buy-color" style="display: inline;">
+                                                    <span class="range-value">{{lastPriceChange > 0 ? '+' : ''}}{{lastPriceChange| number:2}}</span>
+                                                    <span class="range-percent">({{lastPriceChange > 0 ? '+' : ''}}{{lastPriceChangePercentage| number:2}}%)</span>
+                                                </span>
+                                                <span class="sell-color" style="display: none;">
+                                                    <span class="range-value">-0.35</span>
+                                                    <span class="range-percent">(-0.02%)</span>
+                                                </span>
+                                            </span>
+                                        </div>
+                                        <div class="range-price">
+                                            <span class="range-price-high">
+                                                <label class="ng-binding">Low</label>
+                                                <span>
+                                                    <span id="low-cnybtc" class="price small">{{lowRange | currency:""}}</span>
+                                                </span>
+                                            </span>
+                                            <span class="range-price-low">
+                                                <label class="ng-binding">High</label>
+                                                <span>
+                                                    <span id="high-cnybtc" class="price small">{{highRange | currency:""}}</span>
+                                                </span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody class="bids">
+                            <tr ng-repeat="bid in bids | orderBy: 'dateTime':true | limitTo:bidLimit" class="buy-color">
+                                <td>
+                                    <div>
+                                        {{bid.price | currency:"₦"}}
+                                        <span class="percent-bid" ng-style="{width: {{bid.percentageChange}} + '%'}">
+                                        </span>
+                                    </div>
+
+                                </td>
+                                <td>
+                                    <div>
+                                        {{bid.quantity}}
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <table class="trades_cnybtc table" style="border: 0px solid #d2d5d7;">
+                    <thead>
+                        <tr>
+                            <td style="text-align:left;"><span><span>Time</span></span></td>
+                            <td style="text-align:center;"><span><span>Price</span></span></td>
+                            <td style="text-align:right;"><span><span>Quantity</span></span></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="trade in trades | orderBy: 'dateTime':true | limitTo:tradeLimit" ng-class="{'trade sell-color': trade.side == 'Sell', 'trade buy-color': trade.side == 'Buy'}">
+                            <td style="text-align:left;">{{trade.dateTime | date:'HH:mm:ss'}}</td>
+                            <td style="text-align:center;">{{trade.price | currency:"₦"}}</td>
+                            <td style="text-align:right;">{{trade.quantity}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    <div ng-include src="'/templates/stock_info.html'"></div>    
+</div>
